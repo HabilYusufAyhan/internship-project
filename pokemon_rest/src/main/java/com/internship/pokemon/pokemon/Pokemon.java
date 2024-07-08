@@ -17,9 +17,7 @@ public class Pokemon {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private Integer level;
-    private Integer remainingPoint;
-    private Integer ownerID;
+
 
 
 

@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "train")
 public class Trainer {
 
@@ -18,7 +19,12 @@ public class Trainer {
     private int id;
     private String firstName;
     private String lastName;
-    private Integer coin;
+
+
+    public Trainer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
 
 

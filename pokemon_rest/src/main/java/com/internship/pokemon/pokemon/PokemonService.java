@@ -28,9 +28,6 @@ public class PokemonService {
 
         Pokemon pokemon = new Pokemon();
         pokemon.setName(pokemonAddRequest.name());
-        pokemon.setLevel(1);
-        pokemon.setRemainingPoint(levelPoints[0]);
-        pokemon.setOwnerID(pokemonAddRequest.owner());
         Pokemon savedTrainer = pokemonRepository.save(pokemon);
         return savedTrainer;
     }
