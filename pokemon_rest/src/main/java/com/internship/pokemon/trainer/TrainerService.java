@@ -1,8 +1,5 @@
 package com.internship.pokemon.trainer;
 
-import com.internship.pokemon.trainer.Trainer;
-import com.internship.pokemon.trainer.TrainerMapper;
-import com.internship.pokemon.trainer.TrainerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

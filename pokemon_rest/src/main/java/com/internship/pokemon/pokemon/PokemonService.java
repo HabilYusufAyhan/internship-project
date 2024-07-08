@@ -12,28 +12,46 @@ import java.util.Optional;
 @Service
 public class PokemonService {
     private final PokemonRepository pokemonRepository;
+    private final PokemonMapper pokemonMapper;
+
     public List<Pokemon> findAll() {
         return pokemonRepository.findAll();
     }
+
     public Pokemon findPokemon(Integer id) {
         Optional<Pokemon> pokemon = pokemonRepository.findById(id);
-        if (!pokemon.isPresent()){
+
+        if (!pokemon.isPresent()) {
             throw new RuntimeException("Pokemon not found");
         }
+
         return pokemon.get();
     }
-    public Pokemon addPokemon(PokemonAddRequest pokemonAddRequest) {
 
-        int[] levelPoints = {100, 500, 1000, 2000, 4000};
+    public Pokemon createPokemon(PokemonAddRequest pokemonRequest) {
+        Pokemon pokemon = pokemonMapper.toPokemon(pokemonRequest);
 
-        Pokemon pokemon = new Pokemon();
-        pokemon.setName(pokemonAddRequest.name());
-        Pokemon savedTrainer = pokemonRepository.save(pokemon);
-        return savedTrainer;
+        Pokemon savedPokemon = pokemonRepository.save(pokemon);
+
+        return savedPokemon;
     }
 
-    public Pokemon updatePokemon(Pokemon pokemon) {
-        return pokemonRepository.save(pokemon);
+    public Pokemon updatePokemon(Integer id, PokemonAddRequest pokemonRequest) {
+        Pokemon pokemon = findPokemon(id);
+        pokemon.setName(pokemonRequest.name());
+
+
+        Pokemon savedPokemon = pokemonRepository.save(pokemon);
+
+        return savedPokemon;
+    }
+
+    public Pokemon deletePokemon(Integer id) {
+        Pokemon pokemon = findPokemon(id);
+
+        pokemonRepository.delete(pokemon);
+
+        return pokemon;
     }
 
 }

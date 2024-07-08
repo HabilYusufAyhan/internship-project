@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name = "pokemons")
 public class Pokemon {
 
@@ -18,7 +19,9 @@ public class Pokemon {
     private int id;
     private String name;
 
-
+   public Pokemon(String name) {
+       this.name = name;
+   }
 
 
 }

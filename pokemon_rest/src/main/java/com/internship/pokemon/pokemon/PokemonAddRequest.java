@@ -1,4 +1,7 @@
 package com.internship.pokemon.pokemon;
 
-public record PokemonAddRequest(String name , Integer owner) {
+import lombok.Builder;
+
+@Builder
+public record PokemonAddRequest(String name) {
 }

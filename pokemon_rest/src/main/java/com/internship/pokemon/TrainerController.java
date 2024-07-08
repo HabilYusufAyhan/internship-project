@@ -27,6 +27,7 @@ public class TrainerController {
     public Trainer findTrainer(
             @PathVariable Integer trainerId
     ) {
+
         return trainerService.findTrainer(trainerId);
     }
 
