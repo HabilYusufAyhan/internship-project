@@ -25,13 +25,17 @@ public class Gym {
     private int id;
     private String name;
 
+
+
     @JsonIdentityInfo(
             generator = ObjectIdGenerators.PropertyGenerator.class,
             property = "id")
     @OneToMany(mappedBy="gym",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
     private List<Trainer> trainers;
 
-
+    public static GymDTO toDTO(Gym gym) {
+        return GymDTO.fromEntity(gym);
+    }
   /*  public void add(Trainer t) {
         if (trainers == null) {
             trainers = new ArrayList<>();

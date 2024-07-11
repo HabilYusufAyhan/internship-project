@@ -43,6 +43,10 @@ public class Trainer {
     @JoinColumn(name = "gym_id")
     private Gym gym;
 
+    public static TrainerDTO toDTO(Trainer trainer) {
+        return TrainerDTO.fromEntity(trainer);
+    }
+
 
 
 

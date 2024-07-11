@@ -1,8 +1,5 @@
 package com.internship.pokemon.Gym;
 
-import com.internship.pokemon.trainer.Trainer;
-import com.internship.pokemon.trainer.TrainerAddRequest;
-import com.internship.pokemon.trainer.TrainerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,11 +19,12 @@ public class GymController {
     }
 
     @GetMapping("/{gymId}")
-    public Gym findGym(
+    public GymDTO findGym(
             @PathVariable Integer gymId
     ) {
 
-        return gymService.findGym(gymId);
+        Gym gym = gymService.findGym(gymId);
+        return Gym.toDTO(gym);
     }
 
     @PostMapping
